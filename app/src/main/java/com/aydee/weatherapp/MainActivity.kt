@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-// API key :  702172bc528fc622391cd92e8ee6d0c1
+    val apiKey = "<API-Key>"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             .baseUrl("https://api.openweathermap.org/data/2.5/")
             .build().create<ApiInterface>()
 
-        val response = retrofit.getWeatherData(cityName, "702172bc528fc622391cd92e8ee6d0c1", "metric")
+        val response = retrofit.getWeatherData(cityName, apiKey, "metric")
         response.enqueue(object: Callback<WeatherApp>{
             override fun onResponse(call: Call<WeatherApp>, response: Response<WeatherApp>) {
                 val responseBody = response.body()
